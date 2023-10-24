@@ -1,6 +1,6 @@
 package org.fluentUserAPI.model;
 
-final class Address {
+public final class Address {
     private String numeroRue;
     private String nomRue;
     private String codePostal;
