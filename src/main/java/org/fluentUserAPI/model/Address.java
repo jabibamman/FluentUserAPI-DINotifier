@@ -2,10 +2,10 @@ package org.fluentUserAPI.model;
 
 import java.util.Objects;
 
-public record Address( int street_number, String street_name, int postal_cod , String city) {
+public record Address( int streetNumber, String streetName, int postalCod , String city) {
   public Address{
-    Objects.requireNonNull(street_name);
-    Objects.requireNonNull(postal_cod);
+    Objects.requireNonNull(streetName);
+    Objects.requireNonNull(postalCod);
     Objects.requireNonNull(city);
   }
 
