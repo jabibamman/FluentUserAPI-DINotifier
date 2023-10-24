@@ -1,12 +1,12 @@
 package org.fluentUserAPI.model;
 
-public final class Adresse {
+public final class Address {
   private String numeroRue;
   private String nomRue;
   private String codePostal;
   private String ville;
 
-  private Adresse(String numeroRue, String nomRue, String codePostal,
+  private Address(String numeroRue, String nomRue, String codePostal,
                   String ville) {
     this.numeroRue = numeroRue;
     this.nomRue = nomRue;
