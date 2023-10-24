@@ -1,17 +1,12 @@
 package org.fluentUserAPI.model;
 
-final class Address {
-    private String numeroRue;
-    private String nomRue;
-    private String codePostal;
-    private String ville;
+import java.util.Objects;
 
-    private Address(String numeroRue, String nomRue, String codePostal, String ville) {
-        this.numeroRue = numeroRue;
-        this.nomRue = nomRue;
-        this.codePostal = codePostal;
-        this.ville = ville;
-    }
-
+public record Address( int street_number, String street_name, int postal_cod , String city) {
+  public Address{
+    Objects.requireNonNull(street_name);
+    Objects.requireNonNull(postal_cod);
+    Objects.requireNonNull(city);
+  }
 
 }
