@@ -1,5 +1,7 @@
 package org.fluentUserAPI.builder;
 
+import org.fluentUserAPI.model.Address;
+
 import java.util.Objects;
 
 public class AddressBuilder {
@@ -39,16 +41,16 @@ public class AddressBuilder {
         return addressBuilder;
     }
 
-    public QueryBuilder orderBy(String orderBy) {
+    public AddressBuilder orderBy(String orderBy) {
         AddressBuilder addressBuilder = new AddressBuilder();
         addressBuilder.streetNumber = streetNumber;
         addressBuilder.streetName = streetName;
-        addressBuilder.postalCode = Objects.requireNonNull(postalCode);
-        addressBuilder.city = city;
+        addressBuilder.postalCode = postalCode;
+        addressBuilder.city = Objects.requireNonNull(city);
         return addressBuilder;
     }
 
-    public Query build() {
-        return new Query(select, from, where, orderBy);
+    public Address build() {
+        return new Address(streetNumber, streetName, postalCode, city);
     }
 }
