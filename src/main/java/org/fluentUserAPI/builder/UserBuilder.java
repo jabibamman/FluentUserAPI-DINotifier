@@ -2,7 +2,6 @@ package org.fluentUserAPI.builder;
 
 import java.util.Objects;
 import java.util.UUID;
-
 import org.fluentUserAPI.model.Address;
 import org.fluentUserAPI.model.User;
 import org.fluentUserAPI.model.UserBuilderModel;
@@ -57,6 +56,7 @@ public class UserBuilder implements UserBuilderModel {
 
   @Override
   public User build() {
-    return new User(UUID.randomUUID().toString(), firstname, lastname, age, address);
+    return new User(UUID.randomUUID().toString(), firstname, lastname, age,
+                    address);
   }
 }

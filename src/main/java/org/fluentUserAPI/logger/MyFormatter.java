@@ -7,5 +7,4 @@ public class MyFormatter implements Formatter {
   public String format(String message) {
     return "\u001B[34m[LOG] " + new Date() + " - " + message + "\u001B[0m";
   }
-
 }

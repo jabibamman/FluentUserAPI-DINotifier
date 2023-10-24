@@ -13,10 +13,10 @@ public class AddressBuilder {
 
   public AddressBuilder city(String city) {
     AddressBuilder addressBuilder = new AddressBuilder();
-    addressBuilder.streetNumber =streetNumber;
+    addressBuilder.streetNumber = streetNumber;
     addressBuilder.streetName = streetName;
     addressBuilder.postalCode = postalCode;
-    addressBuilder.city =  Objects.requireNonNull(city);
+    addressBuilder.city = Objects.requireNonNull(city);
     return addressBuilder;
   }
 
