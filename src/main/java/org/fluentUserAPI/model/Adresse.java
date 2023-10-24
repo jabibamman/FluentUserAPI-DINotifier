@@ -1,4 +1,4 @@
-package org.fluentUserAPI.builder;
+package org.fluentUserAPI.model;
 
 final class Adresse {
     private String numeroRue;
