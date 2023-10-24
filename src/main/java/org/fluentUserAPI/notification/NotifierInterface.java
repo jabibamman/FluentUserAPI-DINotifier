@@ -1,7 +1,5 @@
 package org.fluentUserAPI.notification;
 
-
 public interface NotifierInterface {
-    void notify(String message);
-
+  void notify(String message);
 }
