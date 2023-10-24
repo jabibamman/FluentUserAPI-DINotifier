@@ -1,13 +1,13 @@
 package org.fluentUserAPI.model;
 
 public interface UserBuilderModel {
-    UserBuilderModel firstname(String firstname);
+  UserBuilderModel firstname(String firstname);
 
-    UserBuilderModel lastname(String lastname);
+  UserBuilderModel lastname(String lastname);
 
-    UserBuilderModel age(int age);
+  UserBuilderModel age(int age);
 
-    UserBuilderModel address(Address address);
+  UserBuilderModel address(Address address);
 
-    User build();
+  User build();
 }
