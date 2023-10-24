@@ -11,9 +11,18 @@ public class AddressBuilder {
 
   public static AddressBuilder create() { return new AddressBuilder(); }
 
+  public AddressBuilder city(String city) {
+    AddressBuilder addressBuilder = new AddressBuilder();
+    addressBuilder.streetNumber =streetNumber;
+    addressBuilder.streetName = streetName;
+    addressBuilder.postalCode = postalCode;
+    addressBuilder.city =  Objects.requireNonNull(city);
+    return addressBuilder;
+  }
+
   public AddressBuilder streetNumber(int streetNumber) {
     AddressBuilder addressBuilder = new AddressBuilder();
-    addressBuilder.streetNumber = streetNumber;
+    addressBuilder.streetNumber = Objects.requireNonNull(streetNumber);
     addressBuilder.streetName = streetName;
     addressBuilder.postalCode = postalCode;
     addressBuilder.city = city;

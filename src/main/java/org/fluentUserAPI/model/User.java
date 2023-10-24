@@ -14,4 +14,7 @@ public record User(String id, String firstname, String lastname, int age,
   }
 
 
+  public String getId() {
+    return id;
+  }
 }

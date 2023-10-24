@@ -1,6 +1,6 @@
 package org.fluentUserAPI.logger;
 
-public class ConsoleLogger implements Logger {
+public class ConsoleLogger implements LoggerInterface {
   private final Formatter formatter;
 
   public ConsoleLogger(Formatter formatter) { this.formatter = formatter; }

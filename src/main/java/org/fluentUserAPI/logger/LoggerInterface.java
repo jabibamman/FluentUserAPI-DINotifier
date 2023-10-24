@@ -1,6 +1,6 @@
 package org.fluentUserAPI.logger;
 
 @FunctionalInterface
-interface Logger {
+public interface LoggerInterface {
   void log(String message);
 }
