@@ -8,4 +8,8 @@ public record Address(int streetNumber, String streetName, String postalCode, St
     Objects.requireNonNull(postalCode);
     Objects.requireNonNull(city);
   }
+
+    public static Address of(int streetNumber, String streetName, String postalCode, String city) {
+        return new Address(streetNumber, streetName, postalCode, city);
+    }
 }
