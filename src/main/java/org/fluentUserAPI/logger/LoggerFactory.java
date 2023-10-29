@@ -8,7 +8,7 @@ public final class LoggerFactory {
 
   private LoggerFactory() { throw new AssertionError(); }
 
-  public static Logger createFileLogger(String logFilePathValue) {
+  public static LoggerInterface createFileLogger(String logFilePathValue) {
     try {
       Path logFilePath = createFileIfNotExist(logFilePathValue);
       return new FileLogger(logFilePath);

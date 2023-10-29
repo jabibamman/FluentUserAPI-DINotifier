@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 
-final class FileLogger implements Logger {
+final class FileLogger implements LoggerInterface {
 
   private final Path logFilePath;
 
