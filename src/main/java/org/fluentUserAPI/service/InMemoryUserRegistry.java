@@ -18,4 +18,9 @@ public final class InMemoryUserRegistry implements UserRegistry {
   public void save(User user) {
     users.put(user.getId(), user);
   }
+
+  @Override
+  public boolean exists(User user) {
+    return users.containsKey(user.getId());
+  }
 }

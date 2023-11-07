@@ -17,7 +17,11 @@ public class UserService {
     this.logger = logger;
   }
 
+
   public String register(User user) {
+    if (userRegistry.exists(user)) {
+      throw new IllegalArgumentException("User already exists");
+    }
     logger.log("Registering user " + user);
     notifier.notify("Registering user");
     userRegistry.save(user);
@@ -25,4 +29,7 @@ public class UserService {
   }
 
   public User get(User user) { return userRegistry.getById(user.getId()); }
+
 }
+
+

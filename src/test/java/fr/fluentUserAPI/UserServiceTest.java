@@ -1,5 +1,6 @@
 package fr.fluentUserAPI;
 
+import org.fluentUserAPI.builder.UserBuilder;
 import org.fluentUserAPI.logger.ConsoleLogger;
 import org.fluentUserAPI.logger.MyFormatter;
 import org.fluentUserAPI.model.Address;
@@ -8,15 +9,22 @@ import org.fluentUserAPI.notification.FakeNotifier;
 import org.fluentUserAPI.service.InMemoryUserRegistry;
 import org.fluentUserAPI.service.UserService;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class UserServiceTest {
+    private UserService userService;
+    private InMemoryUserRegistry userRegistry;
+
+    @BeforeEach
+    void setUp() {
+        userRegistry = new InMemoryUserRegistry();
+        userService = new UserService(userRegistry, new FakeNotifier(),
+                new ConsoleLogger(new MyFormatter()));
+    }
 
   @Test
-  void test() {
-    var userRegistry = new InMemoryUserRegistry();
-    var userService = new UserService(userRegistry, new FakeNotifier(),
-                                      new ConsoleLogger(new MyFormatter()));
+  void user_should_be_registered() {
     var userId = userService.register(
         User.of("GREGORY", "BOISSINOT", 42,
                 Address.of(10, "Rue de la paix", "75012", "Paris")));
@@ -26,4 +34,47 @@ public class UserServiceTest {
                 Address.of(10, "Rue de la paix", "75012", "Paris")),
         registeredUser);
   }
+
+  @Test
+    void user_without_lastname_should_not_be_registered() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            userService.register(
+                    UserBuilder
+                            .create()
+                            .firstname("Gregory")
+                            .lastname(null)
+                            .age(42)
+                            .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                            .build());
+        });
+    }
+
+    @Test
+    void user_wit_age_inferior_zero_should_not_be_registered() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            userService.register(
+                    UserBuilder
+                            .create()
+                            .firstname("Gregory")
+                            .lastname("Boissinot")
+                            .age(-1)
+                            .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                            .build());
+        });
+    }
+
+    @Test
+    void user_without_address_should_not_be_registered() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            userService.register(
+                    UserBuilder
+                            .create()
+                            .firstname("Gregory")
+                            .lastname("Boissinot")
+                            .age(42)
+                            .address(null)
+                            .build());
+        });
+    }
+
 }
