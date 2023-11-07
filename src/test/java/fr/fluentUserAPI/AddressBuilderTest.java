@@ -1,3 +1,12 @@
+package fr.fluentUserAPI;
+
+
+import org.fluentUserAPI.builder.AddressBuilder;
+import org.fluentUserAPI.model.Address;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+/*
 package org.fluentUserAPI.builder;
 
 import java.util.Objects;
@@ -61,6 +70,21 @@ public class AddressBuilder implements AddressBuilderModel {
   }
 
   public Address build() {
-    return Address.of(streetNumber, streetName, postalCode, city);
+    return new Address(streetNumber, streetName, postalCode, city);
   }
+}
+ */
+public class AddressBuilderTest {
+
+    // make test please bro
+
+
+
+    @Test
+    public void address_should_be_created() {
+        var address = Address.of(1, "Rue de la paix", "75000", "Paris");
+        Assertions.assertEquals(
+                Address.of(1, "Rue de la paix", "75000", "Paris"), address);
+    }
+
 }

@@ -1,6 +1,7 @@
 package org.fluentUserAPI.model;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public record User(String id, String firstname, String lastname, int age,
                    Address address) {
@@ -13,6 +14,17 @@ public record User(String id, String firstname, String lastname, int age,
           "Age must be greater than or equal to 0");
     }
     Objects.requireNonNull(address, "address must not be null");
+  }
+
+  public static User of(String firstname, String lastname, int age,
+                        Address address) {
+    return new User(UUID.randomUUID().toString(), firstname, lastname, age,
+                    address);
+  }
+
+  public static User of(String id, String firstname, String lastname, int age,
+                        Address address) {
+    return new User(id, firstname, lastname, age, address);
   }
 
   public String getId() { return id; }

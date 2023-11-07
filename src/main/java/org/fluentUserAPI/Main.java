@@ -5,6 +5,7 @@ import org.fluentUserAPI.builder.UserBuilder;
 import org.fluentUserAPI.logger.ConsoleLogger;
 import org.fluentUserAPI.logger.MyFormatter;
 import org.fluentUserAPI.notification.EmailNotifier;
+import org.fluentUserAPI.service.InMemoryUserRegistry;
 import org.fluentUserAPI.service.UserService;
 
 public class Main {

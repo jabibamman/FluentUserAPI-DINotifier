@@ -16,8 +16,9 @@ public class UserBuilder implements UserBuilderModel {
 
   @Override
   public UserBuilderModel firstname(String firstname) {
+    Objects.requireNonNull(firstname);
     UserBuilder userBuilder1 = new UserBuilder();
-    userBuilder1.firstname = Objects.requireNonNull(firstname);
+    userBuilder1.firstname = firstname;
     userBuilder1.lastname = lastname;
     userBuilder1.age = age;
     userBuilder1.address = address;
@@ -26,9 +27,10 @@ public class UserBuilder implements UserBuilderModel {
 
   @Override
   public UserBuilderModel lastname(String lastname) {
+    Objects.requireNonNull(lastname);
     UserBuilder userBuilder1 = new UserBuilder();
     userBuilder1.firstname = firstname;
-    userBuilder1.lastname = Objects.requireNonNull(lastname);
+    userBuilder1.lastname = lastname;
     userBuilder1.age = age;
     userBuilder1.address = address;
     return userBuilder1;
@@ -36,21 +38,26 @@ public class UserBuilder implements UserBuilderModel {
 
   @Override
   public UserBuilderModel age(int age) {
+    if (age < 0) {
+      throw new IllegalArgumentException(
+          "Age must be greater than or equal to 0");
+    }
     UserBuilder userBuilder1 = new UserBuilder();
     userBuilder1.firstname = firstname;
     userBuilder1.lastname = lastname;
-    userBuilder1.age = Objects.requireNonNull(age);
+    userBuilder1.age = age;
     userBuilder1.address = address;
     return userBuilder1;
   }
 
   @Override
   public UserBuilderModel address(Address address) {
+    Objects.requireNonNull(address);
     UserBuilder userBuilder1 = new UserBuilder();
     userBuilder1.firstname = firstname;
     userBuilder1.lastname = lastname;
     userBuilder1.age = age;
-    userBuilder1.address = Objects.requireNonNull(address);
+    userBuilder1.address = address;
     return userBuilder1;
   }
 
