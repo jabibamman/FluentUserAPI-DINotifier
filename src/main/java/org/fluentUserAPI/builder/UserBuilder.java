@@ -17,6 +17,9 @@ public class UserBuilder implements UserBuilderModel {
   @Override
   public UserBuilderModel firstname(String firstname) {
     Objects.requireNonNull(firstname);
+    if (firstname.isEmpty()) {
+      throw new IllegalArgumentException("First name should not be empty");
+    }
     UserBuilder userBuilder1 = new UserBuilder();
     userBuilder1.firstname = firstname;
     userBuilder1.lastname = lastname;
@@ -28,6 +31,9 @@ public class UserBuilder implements UserBuilderModel {
   @Override
   public UserBuilderModel lastname(String lastname) {
     Objects.requireNonNull(lastname);
+    if (lastname.isEmpty()) {
+      throw new IllegalArgumentException("Last name should not be empty");
+    }
     UserBuilder userBuilder1 = new UserBuilder();
     userBuilder1.firstname = firstname;
     userBuilder1.lastname = lastname;

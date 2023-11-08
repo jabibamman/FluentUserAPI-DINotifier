@@ -13,15 +13,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class UserServiceTest {
-    private UserService userService;
-    private InMemoryUserRegistry userRegistry;
+  private UserService userService;
+  private InMemoryUserRegistry userRegistry;
 
-    @BeforeEach
-    void setUp() {
-        userRegistry = new InMemoryUserRegistry();
-        userService = new UserService(userRegistry, new FakeNotifier(),
-                new ConsoleLogger(new MyFormatter()));
-    }
+  @BeforeEach
+  void setUp() {
+    userRegistry = new InMemoryUserRegistry();
+    userService = new UserService(userRegistry, new FakeNotifier(),
+                                  new ConsoleLogger(new MyFormatter()));
+  }
 
   @Test
   void user_should_be_registered() {
@@ -36,45 +36,85 @@ public class UserServiceTest {
   }
 
   @Test
-    void user_without_lastname_should_not_be_registered() {
-        Assertions.assertThrows(NullPointerException.class, () -> {
-            userService.register(
-                    UserBuilder
-                            .create()
-                            .firstname("Gregory")
-                            .lastname(null)
-                            .age(42)
-                            .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
-                            .build());
-        });
-    }
+  void user_without_firstname_should_not_be_registered() {
+    Assertions.assertThrows(
+        NullPointerException.class,
+        ()
+            -> userService.register(
+                UserBuilder.create()
+                    .firstname(null)
+                    .lastname("Boissinot")
+                    .age(42)
+                    .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                    .build()));
+  }
 
-    @Test
-    void user_wit_age_inferior_zero_should_not_be_registered() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            userService.register(
-                    UserBuilder
-                            .create()
-                            .firstname("Gregory")
-                            .lastname("Boissinot")
-                            .age(-1)
-                            .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
-                            .build());
-        });
-    }
+  @Test
+  void user_with_empty_firstname_should_not_be_registered() {
+    Assertions.assertThrows(
+        IllegalArgumentException.class,
+        ()
+            -> userService.register(
+                UserBuilder.create()
+                    .firstname("")
+                    .lastname("Boissinot")
+                    .age(42)
+                    .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                    .build()));
+  }
 
-    @Test
-    void user_without_address_should_not_be_registered() {
-        Assertions.assertThrows(NullPointerException.class, () -> {
-            userService.register(
-                    UserBuilder
-                            .create()
-                            .firstname("Gregory")
-                            .lastname("Boissinot")
-                            .age(42)
-                            .address(null)
-                            .build());
-        });
-    }
+  @Test
+  void user_without_lastname_should_not_be_registered() {
+    Assertions.assertThrows(
+        NullPointerException.class,
+        ()
+            -> userService.register(
+                UserBuilder.create()
+                    .firstname("Gregory")
+                    .lastname(null)
+                    .age(42)
+                    .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                    .build()));
+  }
 
+  @Test
+  void user_with_empty_lastname_should_not_be_registered() {
+    Assertions.assertThrows(
+        IllegalArgumentException.class,
+        ()
+            -> userService.register(
+                UserBuilder.create()
+                    .firstname("Gregory")
+                    .lastname("")
+                    .age(42)
+                    .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                    .build()));
+  }
+
+  @Test
+  void user_with_negative_age_should_not_be_registered() {
+    Assertions.assertThrows(
+        IllegalArgumentException.class,
+        ()
+            -> userService.register(
+                UserBuilder.create()
+                    .firstname("Gregory")
+                    .lastname("Boissinot")
+                    .age(-1)
+                    .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                    .build()));
+  }
+
+  @Test
+  void user_without_address_should_not_be_registered() {
+    Assertions.assertThrows(
+        NullPointerException.class,
+        ()
+            -> userService.register(UserBuilder.create()
+                                        .firstname("Gregory")
+                                        .lastname("Boissinot")
+                                        .age(42)
+                                        .address(null)
+                                        .build()));
+  }
 }
