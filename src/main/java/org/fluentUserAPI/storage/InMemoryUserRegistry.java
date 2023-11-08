@@ -1,4 +1,4 @@
-package org.fluentUserAPI.service;
+package org.fluentUserAPI.storage;
 
 import java.util.HashMap;
 import java.util.Map;
