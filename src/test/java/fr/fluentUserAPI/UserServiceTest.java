@@ -35,46 +35,76 @@ public class UserServiceTest {
         registeredUser);
   }
 
-  @Test
-    void user_without_lastname_should_not_be_registered() {
-        Assertions.assertThrows(NullPointerException.class, () -> {
-            userService.register(
-                    UserBuilder
-                            .create()
-                            .firstname("Gregory")
-                            .lastname(null)
-                            .age(42)
-                            .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
-                            .build());
-        });
+    @Test
+    void user_without_firstname_should_not_be_registered() {
+        Assertions.assertThrows(NullPointerException.class, () -> userService.register(
+                UserBuilder
+                        .create()
+                        .firstname(null)
+                        .lastname("Boissinot")
+                        .age(42)
+                        .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                        .build()));
     }
 
     @Test
-    void user_wit_age_inferior_zero_should_not_be_registered() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            userService.register(
-                    UserBuilder
-                            .create()
-                            .firstname("Gregory")
-                            .lastname("Boissinot")
-                            .age(-1)
-                            .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
-                            .build());
-        });
+    void user_with_empty_firstname_should_not_be_registered() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> userService.register(
+                UserBuilder
+                        .create()
+                        .firstname("")
+                        .lastname("Boissinot")
+                        .age(42)
+                        .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                        .build()));
+    }
+
+    @Test
+    void user_without_lastname_should_not_be_registered() {
+        Assertions.assertThrows(NullPointerException.class, () -> userService.register(
+                UserBuilder
+                        .create()
+                        .firstname("Gregory")
+                        .lastname(null)
+                        .age(42)
+                        .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                        .build()));
+    }
+
+    @Test
+    void user_with_empty_lastname_should_not_be_registered() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> userService.register(
+                UserBuilder
+                        .create()
+                        .firstname("Gregory")
+                        .lastname("")
+                        .age(42)
+                        .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                        .build()));
+    }
+
+    @Test
+    void user_with_negative_age_should_not_be_registered() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> userService.register(
+                UserBuilder
+                        .create()
+                        .firstname("Gregory")
+                        .lastname("Boissinot")
+                        .age(-1)
+                        .address(Address.of(10, "Rue de la paix", "75012", "Paris"))
+                        .build()));
     }
 
     @Test
     void user_without_address_should_not_be_registered() {
-        Assertions.assertThrows(NullPointerException.class, () -> {
-            userService.register(
-                    UserBuilder
-                            .create()
-                            .firstname("Gregory")
-                            .lastname("Boissinot")
-                            .age(42)
-                            .address(null)
-                            .build());
-        });
+        Assertions.assertThrows(NullPointerException.class, () -> userService.register(
+                UserBuilder
+                        .create()
+                        .firstname("Gregory")
+                        .lastname("Boissinot")
+                        .age(42)
+                        .address(null)
+                        .build()));
     }
 
 }
