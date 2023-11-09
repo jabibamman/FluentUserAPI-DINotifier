@@ -5,8 +5,8 @@ import org.fluentUserAPI.builder.UserBuilder;
 import org.fluentUserAPI.logger.ConsoleLogger;
 import org.fluentUserAPI.logger.MyFormatter;
 import org.fluentUserAPI.notification.EmailNotifier;
-import org.fluentUserAPI.storage.InMemoryUserRegistry;
 import org.fluentUserAPI.service.UserService;
+import org.fluentUserAPI.storage.InMemoryUserRegistry;
 
 public class Main {
   public static void main(String[] args) {
