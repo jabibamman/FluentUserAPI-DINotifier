@@ -6,7 +6,7 @@ import org.fluentUserAPI.logger.MyFormatter;
 import org.fluentUserAPI.model.Address;
 import org.fluentUserAPI.model.User;
 import org.fluentUserAPI.notification.FakeNotifier;
-import org.fluentUserAPI.service.InMemoryUserRegistry;
+import org.fluentUserAPI.storage.InMemoryUserRegistry;
 import org.fluentUserAPI.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
