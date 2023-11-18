@@ -1,6 +1,5 @@
 # FluentUserAPI-DINotifier
 
-
 ## Comment Utiliser
 
 ### Partie 1 : Fluent API
@@ -29,7 +28,7 @@ Address address = new AddressBuilder.create()
 
 ## Partie 2 : Système de Notification
 
-Pour envoyer une notification, utilisez une classe qui implémente NotifierInterface. Par exemple 
+Pour envoyer une notification, utilisez une classe qui implémente NotifierInterface. Par exemple
 
 ```java
 NotifierInterface notifier = new EmailNotifier();
@@ -38,7 +37,7 @@ notifier.sendNotification(user);
 
 ## Partie 3 : Système de Logger
 
-Pour logger dans la console ou bien dans un fichier il faut faire : 
+Pour logger dans la console ou bien dans un fichier il faut faire :
 
 ```java
 LoggerInterface consoleLogger = new ConsoleLogger(new MyFormatter());
@@ -55,7 +54,7 @@ Si vous souhaitez utiliser le système de stockage en mémoire :
 
 ## Partie 5 : Les tests
 
-Pour run les tests il faut faire avec maven : 
+Pour run les tests il faut faire avec maven :
 
 ```sh
 mvn test
